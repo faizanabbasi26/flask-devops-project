@@ -2,7 +2,11 @@ services:
   flask-app:
     build: .
     container_name: flask-devops-app
-    network_mode: "host"
+    ports:
+      - "5000:5000"
     environment:
       - APP_ENV=Production
     restart: always
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
