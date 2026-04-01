@@ -54,7 +54,7 @@ pipeline {
                                }
                            }
 
-                         stage('🚀 Deploy') {{
+                         stage('🚀 Deploy') {
                           steps {
                            echo '=== Production Deploy ho raha hai==='
                            sh ''' 
