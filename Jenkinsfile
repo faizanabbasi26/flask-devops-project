@@ -41,8 +41,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                    docker-compose down || true
-                    docker-compose up -d --build
+                    docker stop flask-devops-app || true
+                    docker rm flask-devops-app || true
+                    docker run -d --name flask-devops-app -p 5000:5000 ${IMAGE_NAME}:latest
                     sleep 3
                     docker ps | grep flask-devops-app
                 '''
