@@ -59,7 +59,9 @@ pipeline {
             steps {
                 echo '=== Production Deploy ho raha hai ==='
                 sh '''
-                    docker-compose down  || true
+                    docker stop flask-devops-app || true
+                    docker rm flask-devops-app   || true
+                    docker-compose down --remove-orphans  || true
                     docker-compose up -d --build
                     sleep 3
                     docker ps | grep flask-devops-app
